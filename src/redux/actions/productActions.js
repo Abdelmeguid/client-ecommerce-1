@@ -5,7 +5,7 @@ const backUrl = process.env.REACT_APP_backUrl;
 export const getProducts = () => async (dispatch) => {
   dispatch(setLoading(true));
   try {
-    const { data } = await axios.get(backUrl/'api/products');
+    const { data } = await axios.get(`${backUrl}/api/products`);
     dispatch(setProducts(data));
   } catch (error) {
     dispatch(
@@ -23,7 +23,7 @@ export const getProducts = () => async (dispatch) => {
 export const getProduct = (id) => async (dispatch) => {
   dispatch(setLoading(true));
   try {
-    const { data } = await axios.get(backUrl`/api/products/${id}`);
+    const { data } = await axios.get(`${backUrl}/api/products/${id}`);
     dispatch(setProduct(data));
   } catch (error) {
     dispatch(
@@ -51,7 +51,7 @@ export const createProductReview = (productId, userId, comment, rating, title) =
         'Content-Type': 'application/json',
       },
     };
-    const { data } = await axios.post(backUrl`/api/products/reviews/${productId}`, { comment, userId, rating, title }, config);
+    const { data } = await axios.post(`${backUrl}/api/products/reviews/${productId}`, { comment, userId, rating, title }, config);
     localStorage.setItem('userInfo', JSON.stringify(data));
     dispatch(productReviewed());
   } catch (error) {

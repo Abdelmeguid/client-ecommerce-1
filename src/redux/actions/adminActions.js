@@ -54,7 +54,7 @@ export const getAllUsers = () => async (dispatch, getState) => {
         "Content-Type": "application/json",
       },
     };
-    const { data } = await axios.get(backUrl/"api/users", config);
+    const { data } = await axios.get(`${backUrl}/"api/users`, config);
     dispatch(getUsers(data));
   } catch (error) {
     dispatch(
@@ -81,7 +81,7 @@ export const deleteUser = (id) => async (dispatch, getState) => {
         "Content-Type": "application/json",
       },
     };
-    const { data } = await axios.delete(backUrl/`api/users/${id}`, config);
+    const { data } = await axios.delete(`${backUrl}/api/users/${id}`, config);
     dispatch(userDelete(data));
   } catch (error) {
     dispatch(
@@ -109,7 +109,7 @@ export const getAllOrders = () => async (dispatch, getState) => {
         "Content-Type": "application/json",
       },
     };
-    const { data } = await axios.get(backUrl/"api/orders", config);
+    const { data } = await axios.get(`${backUrl}/"api/orders`, config);
     dispatch(getOrders(data));
   } catch (error) {
     dispatch(
@@ -136,7 +136,7 @@ export const deleteOrder = (id) => async (dispatch, getState) => {
         "Content-Type": "application/json",
       },
     };
-    const { data } = await axios.delete(backUrl/`api/orders/${id}`, config);
+    const { data } = await axios.delete(`${backUrl}/api/orders/${id}`, config);
     dispatch(orderDelete(data));
   } catch (error) {
     dispatch(
@@ -164,7 +164,7 @@ export const setDelivered = (id) => async (dispatch, getState) => {
         "Content-Type": "application/json",
       },
     };
-    await axios.put(backUrl/`api/orders/${id}`, {}, config);
+    await axios.put(`${backUrl}/api/orders/${id}`, {}, config);
     dispatch(setDeliveredFlag());
   } catch (error) {
     dispatch(
@@ -199,7 +199,7 @@ export const updateProduct =
         },
       };
       const { data } = await axios.put(
-        backUrl/`api/products`,
+        `${backUrl}/api/products`,
         {
           brand,
           name,
@@ -241,7 +241,7 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
         "Content-Type": "application/json",
       },
     };
-    const { data } = await axios.delete(backUrl/`api/products/${id}`, config);
+    const { data } = await axios.delete(`${backUrl}/api/products/${id}`, config);
     dispatch(setProducts(data));
     dispatch(setProductUpdateFlag());
     dispatch(resetError());
@@ -271,7 +271,7 @@ export const uploadProduct = (newProduct) => async (dispatch, getState) => {
         "Content-Type": "application/json",
       },
     };
-    const { data } = await axios.post(backUrl/`api/products`, newProduct, config);
+    const { data } = await axios.post(`${backUrl}/api/products`, newProduct, config);
     dispatch(setProducts(data));
     dispatch(setProductUpdateFlag());
   } catch (error) {
@@ -301,7 +301,7 @@ export const removeReview =
         },
       };
       const { data } = await axios.put(
-        backUrl/`api/products/${productId}/${reviewId}`,
+        `${backUrl}/api/products/${productId}/${reviewId}`,
         {},
         config
       );

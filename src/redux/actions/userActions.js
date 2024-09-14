@@ -19,7 +19,7 @@ export const login = (email, password) => async (dispatch) => {
       },
     };
 
-    const { data } = await axios.post(backUrl/'api/users/login', { email, password }, config);
+    const { data } = await axios.post(`${backUrl}/api/users/login`, { email, password }, config);
      //BZH anf CGPT remove the belwo line ,this put from instructor by mistake it no need .
     // dispatch(userLogin(data));
     localStorage.setItem('userInfo', JSON.stringify(data));
@@ -50,7 +50,7 @@ export const register = (name, email, password) => async (dispatch) => {
       },
     };
 
-    const { data } = await axios.post(backUrl/'api/users/register', { name, email, password }, config);
+    const { data } = await axios.post(`${backUrl}/api/users/register`, { name, email, password }, config);
     dispatch(userLogin(data));
     localStorage.setItem('userInfo', JSON.stringify(data));
   } catch (error) {
@@ -78,7 +78,7 @@ export const updateProfile = (id, name, email, password) => async (dispatch, get
         'Content-Type': 'application/json',
       },
     };
-    const { data } = await axios.put(backUrl`/api/users/profile/${id}`, { _id: id, name, email, password }, config);
+    const { data } = await axios.put(`${backUrl}/api/users/profile/${id}`, { _id: id, name, email, password }, config);
     localStorage.setItem('userInfo', JSON.stringify(data));
     dispatch(updateUserProfile(data));
   } catch (error) {
@@ -111,7 +111,7 @@ export const getUserOrders = () => async (dispatch, getState) => {
         'Content-Type': 'application/json',
       },
     };
-    const { data } = await axios.get(backUrl`/api/users/${userInfo._id}`, config);
+    const { data } = await axios.get(`${backUrl}/api/users/${userInfo._id}`, config);
     dispatch(setUserOrders(data));
   } catch (error) {
     dispatch(
