@@ -21,7 +21,7 @@ export const login = (email, password) => async (dispatch) => {
 
     const { data } = await axios.post(`${backUrl}/api/users/login`, { email, password }, config);
     if (data) {
-      window.location.href = `${backUrl}/products`;
+      window.location.href = `/products`;
     }
      //BZH anf CGPT remove the belwo line ,this put from instructor by mistake it no need .
     // dispatch(userLogin(data));
